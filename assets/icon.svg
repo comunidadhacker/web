@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Logo de Crea Planetas: un planeta terrestre con un simbolo "+" verde arriba a la
+  derecha (crear un mundo nuevo).
+
+  El lienzo es de 108x108 unidades a proposito: es la rejilla en dp del icono
+  adaptativo de Android, asi que este archivo y los VectorDrawable de
+  native/android/ comparten coordenadas literales y no hay que reescalar nada al
+  portar el diseno. Si se edita uno hay que editar el otro.
+
+  Geometria sujeta a la mascara del lanzador: de los 108 dp, solo el circulo de
+  72 dp (radio 36 centrado en 54,54) esta garantizado. Con eso, el planeta es un
+  disco de radio 26 en (50,58) -> a 32.2 del centro, y el "+" esta centrado en
+  (70,38) -> sus esquinas caen a 34.0. Un "+" mas grande o mas hacia la esquina se
+  sale: las puntas de una cruz a 45 grados son el peor caso de la mascara redonda.
+  Solo sangran hasta el borde el cielo y los halos difusos, que no se notan
+  recortados.
+
+  Vectorial, sin bitmaps, como el resto del proyecto.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="512" height="512">
+  <defs>
+    <!-- Fondo: cielo profundo, el mismo #000005 del tema nativo en las esquinas. -->
+    <radialGradient id="cielo" cx="0.34" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#132844" />
+      <stop offset="0.55" stop-color="#050d1c" />
+      <stop offset="1" stop-color="#000005" />
+    </radialGradient>
+    <!-- Oceano: iluminado desde arriba a la izquierda, como la estrella del render. -->
+    <radialGradient id="oceano" cx="0.33" cy="0.28" r="0.95">
+      <stop offset="0" stop-color="#6fc4f2" />
+      <stop offset="0.45" stop-color="#1f74c4" />
+      <stop offset="1" stop-color="#083b6e" />
+    </radialGradient>
+    <!-- Volumen de la esfera: oscurece el limbo opuesto a la luz. -->
+    <radialGradient id="terminador" cx="0.28" cy="0.2" r="1.05">
+      <stop offset="0.35" stop-color="#000814" stop-opacity="0" />
+      <stop offset="0.8" stop-color="#000814" stop-opacity="0.45" />
+      <stop offset="1" stop-color="#000814" stop-opacity="0.9" />
+    </radialGradient>
+    <radialGradient id="brilloVerde" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#35d06a" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#35d06a" stop-opacity="0" />
+    </radialGradient>
+    <clipPath id="disco">
+      <circle cx="48" cy="60" r="27" />
+    </clipPath>
+  </defs>
+
+  <rect width="108" height="108" fill="url(#cielo)" />
+
+  <!-- Estrellas: solo en el fondo, que es la capa que el lanzador puede recortar. -->
+  <g fill="#dce9ff">
+    <circle cx="18" cy="20" r="0.9" opacity="0.9" />
+    <circle cx="90" cy="72" r="0.8" opacity="0.75" />
+    <circle cx="27" cy="93" r="0.7" opacity="0.6" />
+    <circle cx="97" cy="24" r="0.6" opacity="0.55" />
+    <circle cx="12" cy="58" r="0.55" opacity="0.5" />
+    <circle cx="84" cy="97" r="0.5" opacity="0.45" />
+  </g>
+
+  <!-- El planeta se dibuja en su propio sistema (centro 48,60 radio 27) y se
+       reencuadra con esta transformacion, en vez de recalcular cada bezier: el
+       mismo grupo existe en el VectorDrawable, con pivote y escala equivalentes. -->
+  <g transform="translate(2 -2) translate(48 60) scale(0.963) translate(-48 -60)">
+    <!-- Atmosfera: halo exterior difuso mas un limbo nitido. -->
+    <circle cx="48" cy="60" r="28.6" fill="none" stroke="#7fd9ff" stroke-width="2.6" opacity="0.16" />
+    <circle cx="48" cy="60" r="27" fill="url(#oceano)" />
+
+    <g clip-path="url(#disco)">
+      <!-- Continentes. Verde vegetal en el interior, mas arido hacia las costas. -->
+      <g fill="#3f9e52">
+        <path d="M33 49c5-4 12-3 14 2s-2 8-1 12-4 9-10 7-9-10-6-16c1-3 2-4 3-5z" />
+        <path d="M55 54c6-2 12 2 13 8s-4 12-11 11-7-6-5-11c1-4 1-7 3-8z" />
+        <path d="M38 76c4-2 9 0 10 4-3 4-9 3-12 0-1-2 0-3 2-4z" />
+      </g>
+      <!-- Casquetes polares: hielo, no nubes; de ahi el borde definido. Cada uno es
+           el arco del limbo cerrado con una elipse muy achatada, que es como se
+           proyecta un casquete sobre una esfera vista de lado. Cerrarlo con una
+           recta lo convierte en una sonrisa y arquearlo de mas, en un cuenco. -->
+      <g fill="#e4f3ff" opacity="0.88">
+        <path d="M31.7 38.5A27 27 0 0 1 64.3 38.5 16.3 2.6 0 0 1 31.7 38.5Z" />
+        <path d="M32.4 82A27 27 0 0 0 63.6 82 15.6 2.2 0 0 0 32.4 82Z" />
+      </g>
+      <circle cx="48" cy="60" r="27" fill="url(#terminador)" />
+    </g>
+    <circle cx="48" cy="60" r="27" fill="none" stroke="#a5e8ff" stroke-width="1" opacity="0.5" />
+  </g>
+
+  <!-- El "+" no se apoya en el planeta: queda sobre su limbo superior derecho. El
+       reborde oscuro es lo que lo mantiene legible tanto sobre cielo como sobre mar. -->
+  <circle cx="70" cy="38" r="13" fill="url(#brilloVerde)" />
+  <path
+    d="M66.8 28h6.4v6.8H80v6.4h-6.8V48h-6.4v-6.8H60v-6.4h6.8z"
+    fill="#35d06a"
+    stroke="#04220f"
+    stroke-width="2.4"
+    stroke-linejoin="round"
+  />
+</svg>

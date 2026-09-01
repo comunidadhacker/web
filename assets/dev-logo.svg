@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Logo del perfil de desarrollador: Comunidad Hacker Crea Juegos.
+
+  Fondo negro y "CH" en verde fosforo de terminal. El verde es #33FF33, el del
+  fosforo P1 de los monitores monocromos, no el #35D06A del "+" de Crea Planetas:
+  son dos marcas distintas y la del estudio es explicitamente una consola.
+
+  Lienzo de 512x512, el tamano exacto que pide Play para el icono del perfil de
+  desarrollador (PNG de 32 bits, sin transparencia). No es un icono adaptativo de
+  Android, asi que no hay rejilla de 108 dp ni circulo seguro que respetar: Play
+  lo recorta en circulo, asi que el contenido se queda dentro del circulo inscrito
+  (radio 256) con holgura.
+
+  El aspecto de terminal lo dan tres cosas, no el color: el boton de play que sigue
+  a las letras (donde estaria el cursor de bloque de una tty), las lineas de
+  barrido horizontales y el resplandor del fosforo, que es lo que evita que se lea
+  como texto plano sobre negro.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- El negro no es plano: un tubo de rayos catodicos apagado se aclara hacia
+         el centro, donde el haz ha estado excitando el fosforo. -->
+    <radialGradient id="tubo" cx="0.5" cy="0.48" r="0.72">
+      <stop offset="0" stop-color="#04150a" />
+      <stop offset="0.6" stop-color="#010703" />
+      <stop offset="1" stop-color="#000000" />
+    </radialGradient>
+    <!-- Resplandor del fosforo: halo verde alrededor de los trazos. El desenfoque
+         se atenua antes de mezclarlo y el trazo nitido va encima; con el halo a
+         plena intensidad las letras pierden el borde y se leen borrosas. -->
+    <filter id="fosforo" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="borroso" />
+      <feComponentTransfer in="borroso" result="halo">
+        <feFuncA type="linear" slope="0.55" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="halo" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <!-- Lineas de barrido: una franja de 4 px que se repite. Van encima de todo,
+         atenuando, que es como se ven en un CRT real. -->
+    <pattern id="barrido" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000000" opacity="0.22" />
+    </pattern>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#tubo)" />
+
+  <!-- Contorno de la pantalla. Circulo y no rectangulo: Play recorta el icono del
+       perfil en circulo, asi que las esquinas de un marco cuadrado se pierden y
+       queda un rectangulo mordido. El anillo cae a radio 196 y lo mas lejano del
+       texto esta a 159 del centro, asi que sobrevive a cualquier recorte. -->
+  <circle cx="256" cy="256" r="196" fill="none" stroke="#33FF33" stroke-width="3" opacity="0.3" />
+
+  <g filter="url(#fosforo)">
+    <text x="100" y="300" font-family="'DejaVu Sans Mono','Liberation Mono','Courier New',monospace"
+          font-size="150" font-weight="bold" fill="#33FF33" letter-spacing="4">CH</text>
+    <!-- Boton de play: es lo que convierte "CH" en "Crea Juegos" sin escribirlo.
+         Ocupa el sitio del cursor de la tty, de ahi que comparta el alto de las
+         letras. Las esquinas se redondean con el propio trazo (stroke del mismo
+         verde con union redonda) en vez de con curvas en el path: asi el triangulo
+         sigue siendo tres puntos y el radio se ajusta con un solo numero. -->
+    <path d="M338 201 L338 311 L398 256 Z" fill="#33FF33" stroke="#33FF33"
+          stroke-width="10" stroke-linejoin="round" />
+  </g>
+
+  <rect width="512" height="512" fill="url(#barrido)" />
+</svg>

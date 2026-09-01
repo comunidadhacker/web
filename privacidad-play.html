@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidad — Crea Planetas</title>
+<!--
+  Política de privacidad de Crea Planetas (com.creaplanetas.app).
+
+  Google Play exige una URL PÚBLICA, así que este fichero hay que subirlo a algún sitio
+  servido por https y pegar la dirección en Play Console. Es un solo fichero sin CSS ni
+  fuentes externas para que se pueda servir desde cualquier parte (GitHub Pages, un bucket,
+  un hosting estático) sin más piezas.
+
+  Va en español Y en inglés en la misma página, no en dos ficheros: una sola URL que
+  responde en los dos idiomas de la ficha, y así no puede quedarse una mitad sin actualizar.
+
+  TODO lo que dice está comprobado contra el árbol, no supuesto:
+   - Ni una llamada de red en src/ (`fetch`, `XMLHttpRequest`, `WebSocket`: cero).
+   - Dos claves de localStorage y nada más: `crea-planetas.mundos`, `crea-planetas.calidad`.
+   - Ni un plugin de Capacitor de terceros; solo core, cli y android.
+   - El manifiesto declara INTERNET (viene del andamio de Capacitor) y se dice aquí en vez
+     de callarlo: declarar un permiso que no se usa y no mencionarlo es lo que hace que una
+     declaración de Seguridad de los Datos parezca falsa.
+  Si algo de eso cambia, esta página cambia en el mismo commit.
+-->
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0 auto; padding: 2rem 1.25rem 4rem; max-width: 42rem;
+    background: #05070d; color: #dbe4f0;
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 .25rem; }
+  h2 { font-size: 1.15rem; margin: 2.25rem 0 .5rem; color: #35d06a; }
+  h3 { font-size: 1rem; margin: 1.5rem 0 .35rem; }
+  .sub { color: #8b9ab0; margin: 0 0 2rem; font-size: .9rem; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .3rem 0; }
+  code { background: #121a2a; padding: .1rem .35rem; border-radius: .25rem; font-size: .875em; }
+  hr { border: 0; border-top: 1px solid #1d2740; margin: 3rem 0; }
+  a { color: #4db8ff; }
+  .destacado {
+    border-left: 3px solid #35d06a; background: #0a1420;
+    padding: .85rem 1rem; margin: 1.25rem 0; border-radius: 0 .35rem .35rem 0;
+  }
+  footer { margin-top: 3rem; color: #8b9ab0; font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<h1>Política de privacidad de Crea Planetas</h1>
+<p class="sub">
+  Aplicación <code>com.creaplanetas.app</code>, publicada por Comunidad Hacker Crea Juegos.<br>
+  Última actualización: 31 de agosto de 2026.
+</p>
+
+<div class="destacado">
+  <strong>Resumen: Crea Planetas no recoge ningún dato.</strong> No pide permisos, no crea
+  cuentas, no envía nada a ningún servidor y no lleva anuncios ni medición de uso. Funciona
+  entera sin conexión.
+</div>
+
+<h2>Qué datos recogemos</h2>
+<p>
+  Ninguno. La aplicación no recoge, ni transmite, ni comparte, ni vende información de ningún
+  tipo. No hay analítica, no hay publicidad, no hay identificadores de publicidad, no hay
+  registro de errores remoto y no hay cuentas de usuario.
+</p>
+
+<h2>Qué se guarda en el teléfono</h2>
+<p>
+  La aplicación guarda dos cosas en el almacenamiento local del propio dispositivo, y ninguna
+  de las dos sale de él:
+</p>
+<ul>
+  <li>
+    <code>crea-planetas.mundos</code> — los mundos que guardas: el nombre que les pones y los
+    cinco números con los que están hechos, más su semilla. Es lo que hace que un planeta que
+    te ha gustado se pueda volver a encontrar.
+  </li>
+  <li>
+    <code>crea-planetas.calidad</code> — si has elegido calidad de dibujo baja, media o alta.
+  </li>
+</ul>
+<p>
+  Se borran al desinstalar la aplicación o al borrar sus datos desde los ajustes de Android.
+  El nombre de un mundo lo escribes tú: no le pongas datos personales, porque es texto libre
+  y la aplicación no lo trata de ninguna forma especial.
+</p>
+
+<h2>Permisos</h2>
+<p>
+  La aplicación no solicita ningún permiso durante el uso: ni cámara, ni micrófono, ni
+  ubicación, ni contactos, ni almacenamiento externo.
+</p>
+<p>
+  En su manifiesto figura el permiso <code>INTERNET</code>, que forma parte de la plantilla
+  estándar con la que se empaqueta la aplicación. <strong>No se usa</strong>: el código no
+  hace ni una petición de red, y el juego funciona completo en modo avión. Lo mencionamos
+  porque preferimos explicar un permiso declarado antes que dejar que parezca que se oculta.
+</p>
+
+<h2>Niños</h2>
+<p>
+  Crea Planetas está pensada para niños y cumple la política de Familias de Google Play. Como
+  no se recoge ningún dato, no se recogen datos de menores: ni identificadores persistentes,
+  ni identificador de publicidad, ni IMEI, ni dirección MAC, ni ubicación. Tampoco hay
+  anuncios, ni compras dentro de la aplicación, ni funciones sociales, ni enlaces a redes
+  sociales, ni contenido generado por otros usuarios.
+</p>
+<p>
+  La aplicación contiene enlaces a la página de la ficha en Google Play y a la de nuestro
+  perfil de desarrollador, en la pantalla de ajustes. Se abren en el navegador del sistema.
+</p>
+
+<h2>Cambios</h2>
+<p>
+  Si alguna versión futura llegara a recoger algo, esta página se actualizaría antes de
+  publicarla, y el cambio se reflejaría también en la declaración de Seguridad de los Datos de
+  la ficha de Google Play.
+</p>
+
+<h2>Contacto</h2>
+<p>
+  Comunidad Hacker Crea Juegos — <a href="mailto:CORREO-PENDIENTE@example.com">CORREO PENDIENTE</a>
+</p>
+
+<hr>
+
+<h1 lang="en">Privacy Policy for Crea Planetas</h1>
+<p class="sub" lang="en">
+  App <code>com.creaplanetas.app</code>, published by Comunidad Hacker Crea Juegos.<br>
+  Last updated: 31 August 2026.
+</p>
+
+<div class="destacado" lang="en">
+  <strong>Summary: Crea Planetas collects no data.</strong> It requests no permissions,
+  creates no accounts, sends nothing to any server, and contains no ads or analytics. It runs
+  entirely offline.
+</div>
+
+<div lang="en">
+<h2>What we collect</h2>
+<p>
+  Nothing. The app does not collect, transmit, share or sell information of any kind. There is
+  no analytics, no advertising, no advertising identifier, no remote crash reporting and no
+  user accounts.
+</p>
+
+<h2>What is stored on the device</h2>
+<p>
+  The app stores two things in local storage on the device itself, and neither ever leaves it:
+</p>
+<ul>
+  <li>
+    <code>crea-planetas.mundos</code> — the worlds you save: the name you give them and the
+    five numbers they are built from, plus their seed.
+  </li>
+  <li>
+    <code>crea-planetas.calidad</code> — whether you chose low, medium or high render quality.
+  </li>
+</ul>
+<p>
+  Both are removed when you uninstall the app or clear its data from Android settings. World
+  names are free text that you type; please do not put personal information in them.
+</p>
+
+<h2>Permissions</h2>
+<p>
+  The app requests no runtime permissions: no camera, microphone, location, contacts or
+  external storage.
+</p>
+<p>
+  Its manifest does declare <code>INTERNET</code>, which comes from the standard packaging
+  template. <strong>It is not used</strong>: the code makes no network requests and the game
+  works fully in airplane mode. We mention it rather than leave a declared permission
+  unexplained.
+</p>
+
+<h2>Children</h2>
+<p>
+  Crea Planetas is designed for children and complies with the Google Play Families policy.
+  Because no data is collected at all, no data is collected from minors: no persistent
+  identifiers, no advertising ID, no IMEI, no MAC address, no location. There are no ads, no
+  in-app purchases, no social features, no links to social networks and no user-generated
+  content.
+</p>
+<p>
+  The app links to its own Google Play listing and to our developer profile page from the
+  settings screen. These open in the system browser.
+</p>
+
+<h2>Changes</h2>
+<p>
+  If a future version ever collected anything, this page would be updated before that version
+  shipped, and the change would also be reflected in the Data Safety declaration on the Google
+  Play listing.
+</p>
+
+<h2>Contact</h2>
+<p>
+  Comunidad Hacker Crea Juegos — <a href="mailto:CORREO-PENDIENTE@example.com">EMAIL PENDING</a>
+</p>
+</div>
+
+<footer>
+  Comunidad Hacker Crea Juegos · Crea Planetas
+</footer>
+
+</body>
+</html>

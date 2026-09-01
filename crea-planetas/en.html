@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crea Planetas — Comunidad Hacker Crea Juegos</title>
+<meta name="description" content="Build worlds with real physics: move five sliders, see what planet comes out.">
+<meta name="color-scheme" content="dark">
+
+<link rel="icon" type="image/svg+xml" href="../assets/icon.svg">
+<link rel="stylesheet" href="../assets/sitio.css">
+<!--
+  PAGINA GENERADA. No la edites a mano: "npm run sitio" la reescribe entera desde
+  play/*.md en el repositorio del juego, y cualquier cambio hecho aqui se pierde en la
+  siguiente generacion. Para cambiar un texto, cambialo en play/.
+-->
+</head>
+<body>
+
+<a class="salta" href="#principal">Ir al contenido</a>
+
+<header class="barra">
+  <a class="marca" href="../index.html">
+    <img src="../assets/dev-logo.svg" alt="" width="28" height="28">
+    <span>Comunidad Hacker <b>Crea Juegos</b></span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../en/index.html">Home</a>
+    <a href="../crea-planetas/en.html" aria-current="page">Crea Planetas</a>
+    <a href="../prensa.html">Press</a>
+    <a href="../privacidad.html">Privacy</a>
+  </nav>
+</header>
+
+<main id="principal">
+
+<div class="heroe">
+  <img src="../assets/icon.svg" alt="Crea Planetas icon">
+  <div>
+    <h1>Crea Planetas</h1>
+    <p class="reclamo">Build worlds with real physics: move five sliders, see what planet comes out.</p>
+    <div class="botones">
+      <a class="boton" href="https://play.google.com/store/apps/details?id=com.creaplanetas.app">Get it on Google Play</a>
+      <a class="boton secundario" href="../privacidad.html">What data it collects (none)</a>
+    </div>
+    <p class="apagado">Android 12+ · landscape · v0.1.0</p>
+  </div>
+</div>
+
+<h2>Screenshots</h2>
+<p class="medida apagado">
+  None of these images is drawn or retouched: they are eight worlds computed by the game, each
+  with its five sliders somewhere different, and under each one are the numbers the physics
+  actually produced.
+</p>
+<div class="galeria">
+  <figure class="captura">
+    <a href="../capturas/01-tierra.png"
+       aria-label="Open the TIERRA screenshot full size, PNG 1920x1080">
+      <img src="../capturas/01-tierra.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>TIERRA</strong>
+      <span>la Tierra: el anclaje. Templado, en zona habitable, 71% oceano</span>
+      <span class="datos">293 K · templado · 66% ocean</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/02-gigante-gaseoso.png"
+       aria-label="Open the GIGANTE screenshot full size, PNG 1920x1080">
+      <img src="../capturas/02-gigante-gaseoso.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>GIGANTE</strong>
+      <span>gigante gaseoso: bandas zonales y nubes de metano/amoniaco</span>
+      <span class="datos">91 K · super-helado · ice 100% · 3 rings · gaseous</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/03-mundo-helado.png"
+       aria-label="Open the HIELO screenshot full size, PNG 1920x1080">
+      <img src="../capturas/03-mundo-helado.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>HIELO</strong>
+      <span>casquetes polares: un campo de frio sobre el relieve, no una banda de latitud</span>
+      <span class="datos">207 K · helado · 72% ocean · ice 100%</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/04-mundo-lava.png"
+       aria-label="Open the LAVA screenshot full size, PNG 1920x1080">
+      <img src="../capturas/04-mundo-lava.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>LAVA</strong>
+      <span>oceano de magma: el regimen caliente, con la banda de lava en el eje termico</span>
+      <span class="datos">1639 K · lava</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/05-enana-roja.png"
+       aria-label="Open the ENANA ROJA screenshot full size, PNG 1920x1080">
+      <img src="../capturas/05-enana-roja.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>ENANA ROJA</strong>
+      <span>estrella M: la luz es mas roja porque el cuerpo negro lo es, no por un filtro</span>
+      <span class="datos">286 K · templado · 96% ocean · ice 3%</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/06-mundo-oceano.png"
+       aria-label="Open the OCEANO screenshot full size, PNG 1920x1080">
+      <img src="../capturas/06-mundo-oceano.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>OCEANO</strong>
+      <span>supertierra oceanica: el agua tapa el relieve casi entero</span>
+      <span class="datos">315 K · templado · 100% ocean</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/07-desierto.png"
+       aria-label="Open the DESIERTO screenshot full size, PNG 1920x1080">
+      <img src="../capturas/07-desierto.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>DESIERTO</strong>
+      <span>mundo arido y templado: el mapa de humedad manda y sale un desierto global</span>
+      <span class="datos">288 K · templado · 8% ocean</span>
+    </figcaption>
+  </figure>
+  <figure class="captura">
+    <a href="../capturas/08-anillos.png"
+       aria-label="Open the ANILLOS screenshot full size, PNG 1920x1080">
+      <img src="../capturas/08-anillos.jpg" width="1280" height="720" loading="lazy" alt="">
+    </a>
+    <figcaption>
+      <strong>ANILLOS</strong>
+      <span>mundo rocoso con anillos separados del planeta: la imagen de escaparate</span>
+      <span class="datos">148 K · helado-co2 · 100% ocean · ice 100% · 2 rings</span>
+    </figcaption>
+  </figure>
+</div>
+
+<section class="medida">
+<p>Crea Planetas is a toy for understanding how a world is made.</p>
+<p>No levels, no score, no way to lose. Five sliders and a universe that answers.</p>
+<h2>FIVE SLIDERS, ONE WHOLE WORLD</h2>
+<ul>
+  <li>Star mass — from a tiny red dwarf to a blue-white giant.</li>
+  <li>Planet mass — from an asteroid to a gas giant.</li>
+  <li>Orbital distance — from scorched to frozen.</li>
+  <li>Water and volatiles — from an airless desert to an ocean world.</li>
+  <li>Rings — from none to a system with gaps and ringlets.</li>
+</ul>
+<p>Move any of them and the whole world changes at once: the colour of the sky, the height of the mountains, where ice forms, whether there are clouds, whether there is life. Nothing is drawn in advance.</p>
+<h2>REAL PHYSICS, NOT SPECIAL EFFECTS</h2>
+<p>Everything you see comes out of an actual equation, not a lookup table of pre-made planets:</p>
+<ul>
+  <li>A star's colour is its blackbody spectrum at its temperature, run through the response of the human eye. A 3000 K star looks red because 3000 K is red.</li>
+  <li>Planet radius follows from mass by the Chen &amp; Kipping relation.</li>
+  <li>The habitable zone is Kopparapu's, with its moist- and maximum-greenhouse edges.</li>
+  <li>Ice appears and spreads through the Budyko-Sellers ice-albedo feedback, the same one behind real ice ages.</li>
+  <li>Continents are drawn by tectonic plates pushing against each other.</li>
+  <li>Rings end where the Roche limit says they do, which depends on the planet's density.</li>
+  <li>An atmosphere is kept or lost according to gravity and the radiation it receives.</li>
+</ul>
+<p>Which is why the game sometimes gives answers that are uncomfortable and correct: that a planet further from its star can be hotter, the way Venus is hotter than Mercury.</p>
+<h2>FOR CHILDREN WHO CANNOT READ YET</h2>
+<p>Every quantity is shown three times over: a pictogram saying what it is, a bar saying how much, and the number for whoever does read. The bars carry an Earth reference mark, because &quot;half full&quot; means nothing and &quot;past Earth&quot; means something.</p>
+<p>An adult can read the explanations. A four-year-old can drag the water slider and watch an ocean appear. Both are playing the same game.</p>
+<h2>TWENTY REAL WORLDS</h2>
+<p>Pick Earth, Mars, Venus, Jupiter or Neptune and compare them with yours. TRAPPIST-1 e, Proxima Centauri b, K2-18 b and other real exoplanets are there too, with the mass and orbit actually measured for them.</p>
+<h2>EVERY WORLD HAS A NUMBER</h2>
+<p>Behind each planet is a 32-bit seed you can see and flip bit by bit. The same sliders and the same seed always give exactly the same world, so a planet you like can be saved and found again.</p>
+<h2>CIVILIZATIONS AND WONDERS</h2>
+<p>If the world allows it, people appear. And if people appear, they build: stone circles, ziggurats, pyramids, dams, cathedrals, vertical farms, orbital stations. Each work needs both the knowledge to build it and the hands to do it, so a small world will never raise the pyramid even if it knows how.</p>
+<h2>NONE OF THE OTHER THING</h2>
+<ul>
+  <li>No ads.</li>
+  <li>No purchases.</li>
+  <li>No accounts, no sign-up.</li>
+  <li>No internet: works entirely in airplane mode.</li>
+  <li>No data collected at all. Saved worlds stay on the phone.</li>
+</ul>
+<p>Note: the in-game text is in Spanish. Almost everything is pictograms, bars and numbers, so it plays without reading — but the written explanations are Spanish only for now.</p>
+<p>Made by Comunidad Hacker Crea Juegos.</p>
+</section>
+
+</main>
+
+<footer class="pie">
+  <p><strong>Comunidad Hacker Crea Juegos</strong></p>
+  <p>Free games for learning by playing. No ads, no purchases, no data collected.</p>
+  <p><a href="../privacidad.html">Privacy policy</a></p>
+
+</footer>
+
+</body>
+</html>

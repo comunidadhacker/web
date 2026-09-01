@@ -1,0 +1,149 @@
+/*
+  Hoja de estilo del sitio de Comunidad Hacker Crea Juegos.
+
+  GENERADA: la escribe tools/site/estilo.mjs desde el repositorio del juego. No editar aqui.
+
+  Sin framework y sin fuentes externas, a proposito. Una tipografia de Google Fonts es una
+  peticion a un tercero desde una pagina cuya politica de privacidad dice que no se contacta
+  con ningun servidor: seria falso en la propia pagina que lo promete. `system-ui` es la
+  fuente del aparato y no viaja por la red.
+
+  La paleta es la de play/privacidad.html, que ya existia y ahora la comparten las dos.
+*/
+
+:root {
+  --fondo: #05070d;
+  --texto: #dbe4f0;
+  --apagado: #8b9ab0;
+  --verde: #35d06a;
+  --enlace: #4db8ff;
+  --panel: #0a1420;
+  --borde: #1d2740;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--enlace); }
+code {
+  background: #121a2a; padding: .1rem .35rem; border-radius: .25rem;
+  font-size: .875em; word-break: break-word;
+}
+
+/* El enlace de salto solo aparece al tabular: sin el, quien navega con teclado tiene que
+   recorrer la barra entera en cada pagina. */
+.salta {
+  position: absolute; left: -9999px;
+  background: var(--verde); color: #05070d; padding: .6rem 1rem; border-radius: .3rem;
+  font-weight: 600; text-decoration: none; z-index: 10;
+}
+.salta:focus { left: 1rem; top: 1rem; }
+
+.barra {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem;
+  align-items: center; justify-content: space-between;
+  max-width: 68rem; margin: 0 auto; padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--borde);
+}
+.marca {
+  display: flex; align-items: center; gap: .6rem;
+  color: var(--texto); text-decoration: none; font-size: .95rem;
+}
+.marca b { color: var(--verde); font-weight: 600; }
+.barra nav { display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .9rem; }
+.barra nav a { color: var(--apagado); text-decoration: none; }
+.barra nav a:hover { color: var(--texto); }
+.barra nav a[aria-current="page"] { color: var(--verde); }
+
+main { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem 4rem; }
+
+h1 { font-size: clamp(1.75rem, 5vw, 2.6rem); line-height: 1.15; margin: 2.5rem 0 .5rem; }
+h2 {
+  font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--verde); margin: 3rem 0 .75rem;
+}
+h3 { font-size: 1.05rem; margin: 2rem 0 .4rem; }
+.reclamo { font-size: clamp(1.05rem, 2.5vw, 1.3rem); color: var(--texto); max-width: 40rem; }
+.apagado { color: var(--apagado); }
+.medida { max-width: 42rem; }
+
+ul { padding-left: 1.15rem; }
+li { margin: .3rem 0; }
+
+/* Portada: el heroe lleva el icono grande y el reclamo al lado, y cae a una columna en
+   moviles porque a 360 px el icono y el texto lado a lado dejan 12 caracteres por linea. */
+.heroe {
+  display: grid; gap: 2rem; align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 2rem 0 1rem;
+}
+@media (min-width: 46rem) { .heroe { grid-template-columns: 9rem minmax(0, 1fr); } }
+.heroe img { border-radius: 1.25rem; width: 100%; max-width: 9rem; }
+
+.botones { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.75rem 0; }
+.boton {
+  display: inline-block; padding: .7rem 1.15rem; border-radius: .4rem;
+  text-decoration: none; font-weight: 600; font-size: .95rem;
+  background: var(--verde); color: #04120a;
+}
+.boton.secundario {
+  background: transparent; color: var(--texto);
+  border: 1px solid var(--borde);
+}
+.boton:hover { filter: brightness(1.1); }
+
+/* Tarjetas: la rejilla se autoajusta en vez de fijar columnas por ancho de pantalla, asi
+   que anadir un segundo juego al catalogo no obliga a tocar el CSS. */
+.rejilla {
+  display: grid; gap: 1.25rem; margin: 1.5rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+.tarjeta {
+  background: var(--panel); border: 1px solid var(--borde); border-radius: .6rem;
+  padding: 1.1rem 1.2rem;
+}
+.tarjeta h3 { margin-top: 0; }
+.tarjeta p:last-child { margin-bottom: 0; }
+
+.destacado {
+  border-left: 3px solid var(--verde); background: var(--panel);
+  padding: .85rem 1rem; margin: 1.5rem 0; border-radius: 0 .35rem .35rem 0;
+}
+
+/* Galeria de capturas. Las imagenes son 16:9 y se declara `aspect-ratio` para que el hueco
+   este reservado antes de que carguen: sin eso la pagina salta cada vez que llega una, que
+   con ocho imagenes de un mega es todo el rato. */
+.galeria { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+@media (min-width: 46rem) { .galeria { grid-template-columns: 1fr 1fr; } }
+.captura {
+  background: var(--panel); border: 1px solid var(--borde);
+  border-radius: .6rem; overflow: hidden;
+}
+.captura img { aspect-ratio: 16 / 9; background: #000; }
+.captura figcaption { padding: .8rem 1rem 1rem; }
+.captura strong { display: block; letter-spacing: .04em; font-size: .9rem; color: var(--verde); }
+.captura span { display: block; color: var(--apagado); font-size: .875rem; margin-top: .2rem; }
+.captura .datos {
+  margin-top: .5rem; font-size: .8rem; color: var(--apagado);
+  font-variant-numeric: tabular-nums;
+}
+
+table { border-collapse: collapse; width: 100%; margin: 1.25rem 0; font-size: .925rem; }
+th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
+th { color: var(--apagado); font-weight: 600; }
+
+.pie {
+  max-width: 68rem; margin: 0 auto; padding: 2rem 1.25rem 3rem;
+  border-top: 1px solid var(--borde); color: var(--apagado); font-size: .875rem;
+}
+.pie a { color: var(--apagado); }
+.pie p { margin: .35rem 0; }
