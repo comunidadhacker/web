@@ -46,7 +46,7 @@ git push -u origin main
 ```
 
 Then in **Settings → Pages**, set *Source* to "Deploy from a branch", branch `main`,
-folder `/ (root)`. The site appears at `https://<usuario>.github.io/<repo>` within a minute or two.
+folder `/ (root)`. The site appears at `comhackcreajuegos.com` within a minute or two.
 
 To update it after changing the prose in the game repo:
 
@@ -72,7 +72,7 @@ whose name starts with `_`. There are none right now; the day there is one, the 
 
 Play requires the privacy policy at a **public https address**. Once this is live, that is:
 
-    https://<usuario>.github.io/<repo>/privacidad-play.html
+    comhackcreajuegos.com/privacidad-play.html
 
 Paste it into Play Console under *Policy → App content → Privacy policy*. Use the standalone
 file rather than `privacidad.html` so the declaration cannot break if the site's layout
@@ -85,7 +85,7 @@ the pages get `<link rel="canonical">` plus the `og:*` tags that make a shared l
 with an image:
 
 ```bash
-SITIO_BASE=https://<usuario>.github.io/<repo> npm run sitio
+SITIO_BASE=comhackcreajuegos.com npm run sitio
 ```
 
 Without it those tags are omitted entirely rather than written half-wrong — a partial `og:`
