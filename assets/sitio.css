@@ -141,6 +141,45 @@ table { border-collapse: collapse; width: 100%; margin: 1.25rem 0; font-size: .9
 th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
 th { color: var(--apagado); font-weight: 600; }
 
+/* Llamada al apoyo. Se separa con un recuadro porque es lo unico de la pagina que pide algo:
+   mezclada con la prosa parece una frase mas y se lee sin verla, y disfrazada de anuncio
+   contradiria justo lo que el texto dice del juego. El borde verde es el mismo recurso que ya
+   usa `.destacado`, no un color nuevo. */
+.apoyo {
+  border: 1px solid var(--borde); background: var(--panel);
+  border-radius: .6rem; padding: 1.25rem 1.4rem 1.4rem; margin: 2rem auto;
+}
+.apoyo h2 { margin-top: 0; }
+.apoyo .botones { margin-top: 1.1rem; margin-bottom: 0; }
+
+/* Beta cerrada. Mismo recuadro que el apoyo pero con el borde verde encendido, porque no es
+   una peticion equivalente: sin doce probadores el juego no se puede publicar, asi que es lo
+   unico del sitio que bloquea de verdad. */
+.beta {
+  border: 1px solid var(--verde); background: var(--panel);
+  border-radius: .6rem; padding: 1.25rem 1.4rem 1.4rem; margin: 2rem auto;
+}
+.beta h2 { margin-top: 0; color: var(--verde); }
+
+/* Los dos pasos. Numerados y no con vinetas porque el ORDEN es obligatorio: el enlace de
+   aceptacion de Play da error si quien lo abre no esta antes en el grupo. La numeracion es
+   parte de la instruccion, no decoracion. */
+.pasos { list-style: none; padding: 0; margin: 1.25rem 0 0; counter-reset: paso; }
+.pasos li {
+  counter-increment: paso; position: relative;
+  padding: .1rem 0 .1rem 2.4rem; margin: 0 0 1rem;
+}
+.pasos li::before {
+  content: counter(paso);
+  position: absolute; left: 0; top: 0;
+  width: 1.65rem; height: 1.65rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--verde); color: #06140b;
+  font-weight: 700; font-size: .9rem;
+}
+.pasos a { font-weight: 600; }
+.pasos span { display: block; color: var(--apagado); font-size: .875rem; margin-top: .15rem; }
+
 .pie {
   max-width: 68rem; margin: 0 auto; padding: 2rem 1.25rem 3rem;
   border-top: 1px solid var(--borde); color: var(--apagado); font-size: .875rem;
