@@ -46,9 +46,40 @@ git push -u origin main
 ```
 
 Then in **Settings → Pages**, set *Source* to "Deploy from a branch", branch `main`,
-folder `/ (root)`. The site appears at `comhackcreajuegos.com` within a minute or two.
+folder `/ (root)`.
 
-To update it after changing the prose in the game repo:
+### The custom domain: `comhackcreajuegos.com`
+
+`CNAME` is generated into this directory on every build, containing just `comhackcreajuegos.com`. That file
+has to be **in the repository**, not only in the Pages settings screen: configure it only in the
+UI and the first deploy without the file wipes it, dropping the site back to `*.github.io` with
+the wrong certificate.
+
+At the DNS provider for `comhackcreajuegos.com`, for an **apex** domain (no subdomain) add four `A` records
+on `@`:
+
+    185.199.108.153
+    185.199.109.153
+    185.199.110.153
+    185.199.111.153
+
+and, for IPv6, four `AAAA` records on `@`:
+
+    2606:50c0:8000::153
+    2606:50c0:8001::153
+    2606:50c0:8002::153
+    2606:50c0:8003::153
+
+Keep the `A` records even if you add `AAAA`; GitHub recommends both because IPv6-only
+resolution is still not universal. If the provider supports `ALIAS`/`ANAME`, one of those
+pointing at `<usuario>.github.io` replaces all eight. Optionally add a `CNAME` record for
+`www` pointing at `<usuario>.github.io`, and Pages will redirect between the two by itself.
+
+Check it with `dig comhackcreajuegos.com +noall +answer -t A` before blaming the site. Then tick **Enforce
+HTTPS** in Settings → Pages; if it is greyed out, DNS has not propagated yet or the `CNAME`
+file does not match the configured domain exactly.
+
+To update the site after changing the prose in the game repo:
 
 ```bash
 npm run sitio                  # in the game repo; rewrites this directory
@@ -72,21 +103,31 @@ whose name starts with `_`. There are none right now; the day there is one, the 
 
 Play requires the privacy policy at a **public https address**. Once this is live, that is:
 
-    comhackcreajuegos.com/privacidad-play.html
+    https://comhackcreajuegos.com/privacidad-play.html
 
 Paste it into Play Console under *Policy → App content → Privacy policy*. Use the standalone
 file rather than `privacidad.html` so the declaration cannot break if the site's layout
 changes.
 
+## The contact email appears on ONE page, deliberately
+
+`privacidad.html` (and its standalone twin) carry the address, because a privacy policy with no
+way to reach anyone is useless and Play publishes it on the listing anyway. **No other page does**
+— the press page links to the policy instead. Every extra copy is one more address for the
+crawlers that scrape HTML for `mailto:`, and it opens no new channel.
+
+The generator reports this on every run: it greps the other pages and prints either
+`correo: solo en la politica…` or the pages where it leaked. If you add a page, keep it that way.
+
 ## Open Graph and canonical URLs
 
-Both need the site's absolute address, which this repo cannot know. Generate with it set and
-the pages get `<link rel="canonical">` plus the `og:*` tags that make a shared link unfurl
-with an image:
+Generated with `https://comhackcreajuegos.com` by default, so the pages carry `<link rel="canonical">` plus the
+`og:*` tags that make a shared link unfurl with an image. To build a throwaway copy with no
+absolute URLs (and no `CNAME`), pass an empty base:
 
 ```bash
-SITIO_BASE=comhackcreajuegos.com npm run sitio
+SITIO_BASE= npm run sitio
 ```
 
-Without it those tags are omitted entirely rather than written half-wrong — a partial `og:`
-block renders as a broken preview card, which is worse than a plain link.
+Those tags are then omitted entirely rather than written half-wrong — a partial `og:` block
+renders as a broken preview card, which is worse than a plain link.
